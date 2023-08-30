@@ -1,4 +1,4 @@
-﻿namespace ProductCatalog.Core.Requests
+﻿namespace ProductCatalog.Core.Requests.Category
 {
     public class CreateCategoryRequest
     {

@@ -1,0 +1,16 @@
+﻿<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a asp-action="Index" asp-controller="Catalog" class="navbar-brand ms-2">Catalog</a>
+    <div class="d-flex justify-content-end">
+        @if (User.FindFirst(System.Security.Claims.ClaimTypes.Email) != null)
+        {
+            <a asp-action="Logout" asp-controller="Account" class="btn btn-secondary mx-1">Sign out</a>
+        }
+        else
+        {
+            <a asp-action="Login" asp-controller="Account" class="btn btn-secondary mx-1">Sign in</a>
+            <a asp-action="Registration" asp-controller="Account" class="btn btn-secondary mx-1">Sign up</a>
+        }
+    </div>
+  </div>
+</nav>

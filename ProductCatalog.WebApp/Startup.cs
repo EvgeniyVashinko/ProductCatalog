@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProductCatalog.WebApp.Core.Services;
+using ProductCatalog.WebApp.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +48,8 @@ namespace ProductCatalog.WebApp
                     options.LoginPath = new PathString("/Account/Login");
                     options.AccessDeniedPath = new PathString("/Account/Login");
                 });
+
+            services.AddScoped<IAccountService, AccountService>();
 
             services.AddMvc()
                 .AddJsonOptions(x =>

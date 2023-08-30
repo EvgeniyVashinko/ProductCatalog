@@ -3,7 +3,8 @@
 	[ProductId] UNIQUEIDENTIFIER NOT NULL, 
     [CategoryId] UNIQUEIDENTIFIER NOT NULL
         CONSTRAINT [FK_Product_Category] FOREIGN KEY
-        REFERENCES [dbo].[Category]([CategoryId]), 
+        REFERENCES [dbo].[Category]([CategoryId])
+        ON DELETE CASCADE, 
     [Name] NVARCHAR(100) NOT NULL,
     [Price] DECIMAL NULL,
     [Description] NVARCHAR(500) NULL,

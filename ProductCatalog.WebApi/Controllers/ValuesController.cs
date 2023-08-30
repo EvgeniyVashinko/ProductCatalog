@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProductCatalog.Core.Entities;
 using ProductCatalog.Core.Repositories;
 using ProductCatalog.Core.Requests;
+using ProductCatalog.Core.Requests.Category;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
