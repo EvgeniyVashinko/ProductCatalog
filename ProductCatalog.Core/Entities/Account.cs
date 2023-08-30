@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProductCatalog.Core.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;

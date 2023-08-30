@@ -8,6 +8,6 @@ namespace ProductCatalog.Core.Services
     {
         Task<AccountResponse> Login(LoginRequest request);
         Task CreateUser(RegistrationRequest request);
-        Task ChangePassword(ChangePasswordRequest request)
+        Task ChangePassword(ChangePasswordRequest request);
     }
 }
