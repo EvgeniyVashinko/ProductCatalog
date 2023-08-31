@@ -49,6 +49,7 @@ namespace ProductCatalog.WebApi
             services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IProductService, ProductService>();
 
             services.AddAuthentication(options =>
             {

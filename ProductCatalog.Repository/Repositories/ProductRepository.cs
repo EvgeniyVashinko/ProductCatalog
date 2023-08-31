@@ -17,5 +17,11 @@ namespace ProductCatalog.Repository.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public Task<Product> FindByIdAsync(Guid id)
+        {
+            return DbSet.Include(x => x.Category)
+                        .FirstOrDefaultAsync(x => x.Id == id);
+        }
     }
 }

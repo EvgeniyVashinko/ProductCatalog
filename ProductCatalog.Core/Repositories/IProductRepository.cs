@@ -10,5 +10,6 @@ namespace ProductCatalog.Core.Repositories
     public interface IProductRepository : IRepository<Product>
     {
         Task<List<Product>> GetProductsAsync(string category, string name, decimal minPrice, decimal maxPrice);
+        Task<Product> FindByIdAsync(Guid id);
     }
 }
