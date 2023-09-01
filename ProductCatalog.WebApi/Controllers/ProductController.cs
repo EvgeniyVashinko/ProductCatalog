@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProductCatalog.Core.Requests.Product;
 using ProductCatalog.Core.Services;
@@ -9,6 +10,7 @@ namespace ProductCatalog.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin, User, AdvancedUser")]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -54,6 +56,7 @@ namespace ProductCatalog.WebApi.Controllers
         }
 
         [HttpDelete("{productId}")]
+        [Authorize(Roles = "Admin, AdvancedUser")]
         public async Task<IActionResult> DeleteProduct(Guid productId)
         {
             var response = await _productService.DeleteProduct(new()

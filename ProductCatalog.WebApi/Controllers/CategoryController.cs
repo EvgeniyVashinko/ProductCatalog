@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProductCatalog.Core.Requests.Category;
 using ProductCatalog.Core.Services;
 using System;
@@ -8,6 +9,7 @@ namespace ProductCatalog.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin, User, AdvancedUser")]
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
@@ -53,6 +55,7 @@ namespace ProductCatalog.WebApi.Controllers
         }
 
         [HttpDelete("{categoryId}")]
+        [Authorize(Roles = "Admin, AdvancedUser")]
         public async Task<IActionResult> DeleteCategory(Guid categoryId)
         {
             var response = await _categoryService.DeleteCategory(new()

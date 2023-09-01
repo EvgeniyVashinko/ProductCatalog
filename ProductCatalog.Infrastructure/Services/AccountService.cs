@@ -60,7 +60,15 @@ namespace ProductCatalog.Infrastructure.Services
                 Password = PasswordHelper.ComputeHash(request.Password, salt),
             };
 
-            await _accountRepository.AddAccountAsync(account, Role.UserRoleName);
+            if (request.Roles != null)
+            {
+                await _accountRepository.AddAccountAsync(account, request.Roles.ToArray());
+            }
+            else
+            {
+                await _accountRepository.AddAccountAsync(account, Role.UserRoleName);
+            }
+
 
             await _accountRepository.SaveChangesAsync();
         }

@@ -2,11 +2,13 @@
 using System.Threading.Tasks;
 using ProductCatalog.Core.Services;
 using ProductCatalog.Core.Requests.Account;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProductCatalog.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class AccountController : ControllerBase
     {
         private readonly IAccountService _accountService;
@@ -45,6 +47,7 @@ namespace ProductCatalog.WebApi.Controllers
         }
 
         [HttpPost("change-password")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordRequest request)
         {
             await _accountService.ChangePassword(request);
