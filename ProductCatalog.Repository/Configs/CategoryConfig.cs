@@ -17,7 +17,7 @@ namespace ProductCatalog.Repository.Configs
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName("CategoryId");
 
-            builder.HasMany(x => x.Products).WithOne(x => x.Category).HasForeignKey(x => x.CategoryId);
+            builder.HasMany(x => x.Products).WithOne(x => x.Category).HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace ProductCatalog.Infrastructure.Filters
 
         public override Task OnExceptionAsync(ExceptionContext context)
         {
-            _logger.LogError(context.Exception.Message);
+            _logger.LogError(context.Exception.InnerException.Message);
 
             context.Result = GetResult(context);
 
@@ -26,7 +26,7 @@ namespace ProductCatalog.Infrastructure.Filters
 
         public override void OnException(ExceptionContext context)
         {
-            _logger.LogError(context.Exception.Message);
+            _logger.LogError(context.Exception.InnerException.Message);
 
             context.Result = GetResult(context);
         }
