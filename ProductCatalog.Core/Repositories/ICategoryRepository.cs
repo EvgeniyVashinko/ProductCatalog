@@ -9,6 +9,8 @@ namespace ProductCatalog.Core.Repositories
 {
     public interface ICategoryRepository : IRepository<Category>
     {
-        Task<List<Category>> GetCategoriesAsync();
+        Task<List<Category>> GetCategoriesAsync(string category);
+        Task<Category> FindByIdAsync(Guid id);
+
     }
 }

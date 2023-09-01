@@ -50,6 +50,7 @@ namespace ProductCatalog.WebApi
 
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
             services.AddAuthentication(options =>
             {
@@ -70,6 +71,8 @@ namespace ProductCatalog.WebApi
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
                 };
             });
+
+            services.AddScoped<ExceptionHandlerAttribute>();
 
             services.AddControllers(options =>
             {

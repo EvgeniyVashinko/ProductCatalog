@@ -48,9 +48,9 @@ namespace ProductCatalog.WebApi.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> CreateProduct(CreateProductRequest request)
         {
-            var response = await _productService.CreateProduct(request);
+            await _productService.CreateProduct(request);
 
-            return Ok(response);
+            return Ok();
         }
 
         [HttpDelete("{productId}")]

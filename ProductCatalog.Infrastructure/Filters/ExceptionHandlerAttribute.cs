@@ -8,9 +8,9 @@ namespace ProductCatalog.Infrastructure.Filters
 {
     public class ExceptionHandlerAttribute : ExceptionFilterAttribute
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<ExceptionHandlerAttribute> _logger;
 
-        public ExceptionHandlerAttribute(ILogger logger)
+        public ExceptionHandlerAttribute(ILogger<ExceptionHandlerAttribute> logger)
         {
             _logger = logger;
         }

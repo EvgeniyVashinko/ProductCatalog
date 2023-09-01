@@ -12,9 +12,16 @@ namespace ProductCatalog.Repository.Repositories
     {
         public CategoryRepository(AppContext context) : base(context) { }
 
-        public async Task<List<Category>> GetCategoriesAsync()
+        public Task<Category> FindByIdAsync(Guid id)
         {
-            return await DbSet.ToListAsync();
+            return DbSet.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<List<Category>> GetCategoriesAsync(string category)
+        {
+            return await DbSet
+                .Where(x => x.Name.StartsWith(category ?? ""))
+                .ToListAsync();
         }
     }
 }

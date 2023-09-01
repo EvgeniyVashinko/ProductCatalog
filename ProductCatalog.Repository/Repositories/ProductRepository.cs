@@ -15,7 +15,13 @@ namespace ProductCatalog.Repository.Repositories
 
         public Task<List<Product>> GetProductsAsync(string category, string name, decimal minPrice, decimal maxPrice)
         {
-            throw new NotImplementedException();
+            return DbSet
+                .Include(x => x.Category)
+                .Where(x => x.Category.Name.StartsWith(category ?? "") &&
+                            x.Name.StartsWith(name ?? "") &&
+                            (minPrice == 0 && maxPrice == 0 ||
+                            x.Price >= minPrice && x.Price <= maxPrice))
+                .ToListAsync();
         }
 
         public Task<Product> FindByIdAsync(Guid id)

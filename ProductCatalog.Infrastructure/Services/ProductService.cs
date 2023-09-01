@@ -42,7 +42,7 @@ namespace ProductCatalog.Infrastructure.Services
             return response;
         }
 
-        public async Task<ProductResponse> CreateProduct(CreateProductRequest request)
+        public async Task CreateProduct(CreateProductRequest request)
         {
             var product = new Product()
             {
@@ -57,10 +57,6 @@ namespace ProductCatalog.Infrastructure.Services
             await _productRepository.AddAsync(product);
 
             await _productRepository.SaveChangesAsync();
-
-            var response = new ProductResponse(product);
-
-            return response;
         }
 
         public async Task<ProductResponse> UpdateProduct(Guid productId, UpdateProductRequest request)
